@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamila CyberRisk</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#120a14;color:#f9dce9;font-family:Consolas,monospace;min-height:100vh}
+canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.27}
+main{position:relative;z-index:1;max-width:950px;margin:auto;padding:45px 20px}
+header{text-align:center;padding:35px 10px}
+.tag{color:#f5a5cf;letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(30px,6vw,58px);color:#ffb6dc;text-shadow:0 0 12px #ff8fc980;margin:20px 0}
+.status{color:#ffc5e2;border:1px solid #a75b88;display:inline-block;padding:10px 18px;background:#241324}
+.intro{color:#dcb8d0;line-height:1.8;max-width:650px;margin:22px auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:25px}
+.card{background:#211323dd;border:1px solid #70405f;padding:22px;border-radius:8px;transition:.2s}
+.card:hover{border-color:#ff9dd1;transform:translateY(-3px);box-shadow:0 0 20px #ff8fc91c}
+.card h2{color:#ffb5dc;font-size:18px}
+.card p{line-height:1.7;color:#e0c5da;font-size:14px}
+button{background:#3a2040;color:#ffd0e8;border:1px solid #e99ac9;padding:12px 18px;font:inherit;cursor:pointer;margin-top:15px}
+button:hover{background:#52304e}
+#output{white-space:pre-wrap;line-height:1.8;color:#ffc2e3;margin-top:18px;min-height:55px}
+footer{text-align:center;color:#a77a9a;font-size:12px;margin-top:35px}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<main>
+<header>
+<div class="tag">CYBERSECURITY LAB // STUDENT PROJECT</div>
+<h1>KAMILA CYBERRISK</h1>
+<div class="status">● SYSTEM ACCESS GRANTED</div>
+<p class="intro">Добро пожаловать в мою лабораторию кибербезопасности. Изучаем цифровые угрозы, оцениваем риски и защищаем данные.</p>
+<button onclick="scan()">▶ ЗАПУСТИТЬ СКАНИРОВАНИЕ</button>
+<div id="output">Ожидание команды...</div>
+</header>
+<section class="grid">
+<div class="card"><h2>[01] Фишинг</h2><p>Поддельные письма и сайты, которые пытаются украсть пароли. Защита: проверяй адрес отправителя и ссылки.</p></div>
+<div class="card"><h2>[02] Слабые пароли</h2><p>Простые или повторяющиеся пароли повышают риск взлома. Используй уникальные пароли и менеджер паролей.</p></div>
+<div class="card"><h2>[03] Вредоносное ПО</h2><p>Опасные программы могут повредить файлы или украсть данные. Обновляй систему и загружай программы из надёжных источников.</p></div>
+<div class="card"><h2>[04] Защита данных</h2><p>Регулярно создавай резервные копии, включай многофакторную аутентификацию и устанавливай обновления.</p></div>
+</section>
+<footer>PROJECT: KAMILA CYBERRISK · HTML + CSS + JAVASCRIPT + DOCKER</footer>
+</main>
+<script>
+const c=document.getElementById('matrix'),ctx=c.getContext('2d');
+let cols=0,drops=[];
+function resize(){c.width=innerWidth;c.height=innerHeight;cols=Math.floor(c.width/17);drops=Array(cols).fill(1)}
+addEventListener('resize',resize);resize();
+setInterval(()=>{ctx.fillStyle='rgba(2,6,4,0.09)';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#ffb5e8';ctx.font='15px monospace';drops.forEach((y,i)=>{ctx.fillText(String.fromCharCode(0x30A0+Math.random()*96),i*17,y*17);if(y*17>c.height&&Math.random()>.975)drops[i]=0;drops[i]++})},45);
+function scan(){const o=document.getElementById('output');o.textContent='';const lines=['Инициализация CyberRisk Lab...','Проверка учебного окружения...','Анализ типовых киберугроз...','Рекомендация: включите MFA и обновите ПО.','Сканирование демонстрации завершено.'];let i=0;function next(){if(i<lines.length){o.textContent+= '> '+lines[i++]+'\\n';setTimeout(next,550)}}next()}
+</script>
+</body>
+</html>
+

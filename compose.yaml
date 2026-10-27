@@ -1,0 +1,27 @@
+services:
+  cyberrisk:
+    image: kamila20/kamila-cyberrisk:latest
+    container_name: cyberrisk-demo
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  postgres:
+    image: kamila20/kamila-postgres:18-alpine
+    container_name: postgres-demo
+    environment:
+      POSTGRES_PASSWORD: "DemoOnly_ChangeThis_2026"
+    restart: unless-stopped
+
+  portainer:
+    image: portainer/portainer-ce:lts
+    container_name: portainer-demo
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: unless-stopped
+
+volumes:
+  portainer_data:
