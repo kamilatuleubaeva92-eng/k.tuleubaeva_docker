@@ -4,7 +4,7 @@
 
 Дайын 3 образдар:
 
-https://hub.docker.com/repositories/kamila20
+https://hub.docker.com/u/kamila20
 
 ##
 
