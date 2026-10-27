@@ -4,7 +4,7 @@
 
 Дайын 3 образдар:
 
-[https://hub.docker.com/r/kamila20/kamila-cyberrisk](https://hub.docker.com/r/kamila20/kamila-cyberrisk)
+https://hub.docker.com/repositories/kamila20
 
 ##
 
